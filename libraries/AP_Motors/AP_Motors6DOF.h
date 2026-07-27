@@ -26,6 +26,7 @@ public:
         SUB_FRAME_SIMPLEROV_3,
         SUB_FRAME_SIMPLEROV_4,
         SUB_FRAME_SIMPLEROV_5,
+        SUB_FRAME_ADVSR,
         SUB_FRAME_CUSTOM
     } sub_frame_t;
 
