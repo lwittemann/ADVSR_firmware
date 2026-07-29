@@ -130,6 +130,10 @@ void ModeMotordetect::run()
         bool yaw_down = gyro.z < -0.5;
         int yaw = (+int(yaw_up) - int(yaw_down))*current_direction;
 
+        gcs().send_text(MAV_SEVERITY_INFO, "\nFor motor %d:", current_motor + 1);
+        gcs().send_text(MAV_SEVERITY_INFO, "    Received: Pitch = %d, Roll = %d, and Yaw = %d:", pitch, roll, yaw);
+        gcs().send_text(MAV_SEVERITY_INFO, "    Expected: Pitch = %d, Roll = %d, and Yaw = %d:", (int)motors.get_motor_angular_factors(current_motor).y, (int)motors.get_motor_angular_factors(current_motor).x, (int)motors.get_motor_angular_factors(current_motor).z);
+
         Vector3f directions(roll, pitch, yaw);
         // Good read, not inverted
         if (directions == motors.get_motor_angular_factors(current_motor)) {
